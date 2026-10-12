@@ -24,15 +24,15 @@ const PUBLIC_ROUTES = ['/', '/ingresar', '/registrarse', '/tienda', '/devocional
    recorrido de la semana y enlaza al slug que ya exista en el manifest para
    esa fecha. Al iniciar una nueva serie, basta con reemplazar este objeto. */
 const SERIE_ACTUAL = {
-  nombre: 'Dios en Medio de Todo',
+  nombre: 'La mujer que Dios quiere que seas',
   dias: [
-    { date: '2026-10-04', tema: 'Dios cuida de ti' },
-    { date: '2026-10-05', tema: 'No cargues sola lo que puedes entregarle a Dios' },
-    { date: '2026-10-06', tema: '¿Dónde está Dios cuando algo me duele?' },
-    { date: '2026-10-07', tema: 'Aprende a esperar en Dios' },
-    { date: '2026-10-08', tema: 'Cuando tus fuerzas no alcanzan, las de Dios sí' },
-    { date: '2026-10-09', tema: 'Pídele sabiduría a Dios' },
-    { date: '2026-10-10', tema: 'Una paz que no depende de que todo esté bien' }
+    { date: '2026-10-12', tema: 'Una mujer que teme a Dios' },
+    { date: '2026-10-13', tema: 'Una mujer sabia' },
+    { date: '2026-10-14', tema: 'Una mujer que guarda su corazón' },
+    { date: '2026-10-15', tema: 'Una mujer que obedece aunque le cueste' },
+    { date: '2026-10-16', tema: 'Una mujer con dominio propio' },
+    { date: '2026-10-17', tema: 'Una mujer que sirve con lo que Dios le dio' },
+    { date: '2026-10-18', tema: 'Una mujer que vive para lo eterno' }
   ]
 };
 
@@ -426,7 +426,8 @@ const App = {
       const label    = `<span class="serie-row-tema">${item.tema}</span>`;
       const badge    = isToday ? '<span class="serie-row-badge">Hoy</span>' : '';
 
-      if (found) {
+      // Los días futuros se muestran pero no se abren (la serie se publica completa por adelantado).
+      if (found && !(item.date > hoy)) {
         return `<a href="#/devocional/${found.slug}" class="${cls}">${dateHTML}${label}${badge}</a>`;
       }
       return `<div class="${cls}">${dateHTML}${label}${badge}</div>`;
@@ -508,6 +509,10 @@ const App = {
 
     const meta = this.manifest.find(d => d.slug === slug);
     if (!meta) { el.innerHTML = '<p class="loading">Devocional no encontrado.</p>'; return; }
+    if (meta.date > this.hoyISO()) {
+      el.innerHTML = `<p class="loading">Este devocional estará disponible el ${this.dateLong(meta.date)}.</p>`;
+      return;
+    }
 
     try {
       const res  = await fetch(`${slug}.md`);
