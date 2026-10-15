@@ -588,6 +588,7 @@ const ENVIO_TARIFAS = {
   regional:      { '1kg': 12500, '2kg': 16900, op: 'Interrapidísimo' },
   metropolitano: { '1kg': 18500, '2kg': 23400, op: 'Interrapidísimo' },
   municipal:     { '1kg': 20900, '2kg': 25800, op: 'Interrapidísimo' },
+  remoto:        { '1kg': 54000, '2kg': 54000, op: 'Envío aéreo' },
 };
 
 // ¿El pedido actual (producto único o carrito) lleva Kit? → define el tamaño (2kg)

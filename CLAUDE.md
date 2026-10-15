@@ -144,6 +144,7 @@ Wompi junto con el/los producto(s) — ya NO es contra entrega.
   | `regional` | Antioquia (resto) + Eje Cafetero (Quindío, Risaralda, Caldas) | $12.500 | $16.900 |
   | `metropolitano` | Capitales / ciudades principales (Bogotá, Cali, Popayán…) | $18.500 | $23.400 |
   | `municipal` | Resto de municipios (no capital) | $20.900 | $25.800 |
+  | `remoto` | Amazonas (Leticia, Puerto Nariño) — sin acceso terrestre, envío aéreo (plana) | $54.000 | $54.000 |
 - Tarifas base tomadas de guías reales de Interrapidísimo (jul 2026). Referencia completa
   (matriz + clasificador de ciudades) en `~/Downloads/Tarifas_Envio_Mujer_Divina.xlsx`.
 - El checkout muestra "Envío" y "Total a pagar" (`co-envio-info` / `co-total-row` en
